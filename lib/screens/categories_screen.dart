@@ -3,6 +3,9 @@ import '../services/api_service.dart';
 import '../models/category.dart';
 import '../widgets/category_card.dart';
 import 'meal_detail_screen.dart';
+import 'meals_by_category_screen.dart';
+import 'favorites_screen.dart';
+import '../models/meal_detail.dart';
 
 
 class CategoriesScreen extends StatefulWidget {
@@ -56,12 +59,17 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     }
   }
 
+  void _openFavorites() {
+    Navigator.pushNamed(context, FavoritesScreen.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Categories'),
         actions: [
+          IconButton(onPressed: _openFavorites, icon: const Icon(Icons.favorite), tooltip: 'Favorites'),
           IconButton(onPressed: _openRandom, icon: const Icon(Icons.casino), tooltip: 'Random Recipe')
         ],
       ),
